@@ -5,6 +5,8 @@ const $team2score = document.getElementById('score-team2')
 const $team2wickets = document.getElementById('wickets-team2')
 const resetbutton = document.getElementById('reset')
 const strikebutton = document.getElementById('strike')
+const strikeaudio = new Audio("https://i1.faceprep.in/prograd-junior/bat%2Bhit%2Bball.mp3")
+const cheer = new Audio("https://i1.faceprep.in/prograd-junior/Ball%2BHit%2BCheer.mp3")
 
 
 var team1score = 0
@@ -24,6 +26,7 @@ function finished(){
 
 
 strikebutton.onclick = () => {
+    strikeaudio.play()
     ballsfaced++;
     if (turn === 1) {
         var score = possible_outcomes[Math.floor(Math.random() * possible_outcomes.length)];
@@ -63,6 +66,7 @@ strikebutton.onclick = () => {
         if(ballsfaced == 6 || team2wickets == 2 || team2score > team1score ){
             turn = 3
             finished()
+            cheer.play()
         }
 }   
 }
